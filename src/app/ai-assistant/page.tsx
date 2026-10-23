@@ -3,21 +3,80 @@
 import React, { useState, useRef, useEffect } from 'react';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import {
-  Bot, Send, Sparkles, Building2, Calculator, AlertTriangle,
-  Clock, Lightbulb, BarChart3, FileText, Zap, ChevronRight,
-  Paperclip, Image as ImageIcon, Mic, RotateCcw, Copy, ThumbsUp, ThumbsDown,
-  TrendingUp, Shield, Leaf, Package
+  Bot,
+  Send,
+  Sparkles,
+  Building2,
+  Calculator,
+  AlertTriangle,
+  Clock,
+  Lightbulb,
+  BarChart3,
+  FileText,
+  Zap,
+  ChevronRight,
+  Paperclip,
+  Image as ImageIcon,
+  Mic,
+  RotateCcw,
+  Copy,
+  ThumbsUp,
+  ThumbsDown,
+  TrendingUp,
+  Shield,
+  Leaf,
+  Package,
 } from 'lucide-react';
 
 const quickActions = [
-  { icon: Calculator, label: 'Cost Estimation', prompt: 'Estimate the total construction cost for my project', color: 'from-blue-500 to-indigo-600' },
-  { icon: FileText, label: 'Generate BOQ', prompt: 'Generate a Bill of Quantities for a 2BHK apartment', color: 'from-emerald-500 to-teal-600' },
-  { icon: AlertTriangle, label: 'Risk Analysis', prompt: 'Analyze potential risks in my current project', color: 'from-amber-500 to-orange-600' },
-  { icon: Clock, label: 'Timeline Prediction', prompt: 'Predict the total construction duration', color: 'from-purple-500 to-pink-600' },
-  { icon: Package, label: 'Material Optimization', prompt: 'Suggest ways to optimize material usage', color: 'from-cyan-500 to-blue-600' },
-  { icon: Leaf, label: 'Green Building', prompt: 'Give green building recommendations for my project', color: 'from-green-500 to-emerald-600' },
-  { icon: Shield, label: 'Safety Check', prompt: 'Provide safety recommendations for current phase', color: 'from-red-500 to-rose-600' },
-  { icon: TrendingUp, label: 'Budget Optimization', prompt: 'How can I optimize the budget without compromising quality?', color: 'from-violet-500 to-purple-600' },
+  {
+    icon: Calculator,
+    label: 'Cost Estimation',
+    prompt: 'Estimate the total construction cost for my project',
+    color: 'from-blue-500 to-indigo-600',
+  },
+  {
+    icon: FileText,
+    label: 'Generate BOQ',
+    prompt: 'Generate a Bill of Quantities for a 2BHK apartment',
+    color: 'from-emerald-500 to-teal-600',
+  },
+  {
+    icon: AlertTriangle,
+    label: 'Risk Analysis',
+    prompt: 'Analyze potential risks in my current project',
+    color: 'from-amber-500 to-orange-600',
+  },
+  {
+    icon: Clock,
+    label: 'Timeline Prediction',
+    prompt: 'Predict the total construction duration',
+    color: 'from-purple-500 to-pink-600',
+  },
+  {
+    icon: Package,
+    label: 'Material Optimization',
+    prompt: 'Suggest ways to optimize material usage',
+    color: 'from-cyan-500 to-blue-600',
+  },
+  {
+    icon: Leaf,
+    label: 'Green Building',
+    prompt: 'Give green building recommendations for my project',
+    color: 'from-green-500 to-emerald-600',
+  },
+  {
+    icon: Shield,
+    label: 'Safety Check',
+    prompt: 'Provide safety recommendations for current phase',
+    color: 'from-red-500 to-rose-600',
+  },
+  {
+    icon: TrendingUp,
+    label: 'Budget Optimization',
+    prompt: 'How can I optimize the budget without compromising quality?',
+    color: 'from-violet-500 to-purple-600',
+  },
 ];
 
 interface ChatMessage {
@@ -111,64 +170,94 @@ export default function AIAssistantPage() {
 
   return (
     <DashboardLayout>
-      <div className="flex flex-col h-[calc(100vh-8rem)]">
+      <div className="flex h-[calc(100vh-8rem)] flex-col">
         {/* Header */}
-        <div className="flex items-center justify-between mb-4">
+        <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center shadow-glow">
-              <Bot className="w-5 h-5 text-white" />
+            <div className="gradient-primary flex h-10 w-10 items-center justify-center rounded-xl shadow-glow">
+              <Bot className="h-5 w-5 text-white" />
             </div>
             <div>
-              <h1 className="text-lg font-bold text-surface-900 dark:text-white">AI Smart Assistant</h1>
-              <p className="text-xs text-surface-500 dark:text-surface-400 flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <h1 className="text-lg font-bold text-surface-900 dark:text-white">
+                AI Smart Assistant
+              </h1>
+              <p className="flex items-center gap-1 text-xs text-surface-500 dark:text-surface-400">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
                 Online • Green Valley Residency context loaded
               </p>
             </div>
           </div>
-          <button className="btn-ghost text-sm"><RotateCcw className="w-4 h-4" /> New Chat</button>
+          <button className="btn-ghost text-sm">
+            <RotateCcw className="h-4 w-4" /> New Chat
+          </button>
         </div>
 
-        <div className="flex gap-4 flex-1 overflow-hidden">
+        <div className="flex flex-1 gap-4 overflow-hidden">
           {/* Chat Area */}
-          <div className="flex-1 flex flex-col premium-card overflow-hidden">
+          <div className="premium-card flex flex-1 flex-col overflow-hidden">
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-6">
+            <div className="custom-scrollbar flex-1 space-y-6 overflow-y-auto p-4">
               {messages.map((msg) => (
-                <div key={msg.id} className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
-                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${msg.role === 'assistant' ? 'gradient-primary' : 'bg-surface-200 dark:bg-surface-700'
-                    }`}>
+                <div
+                  key={msg.id}
+                  className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}
+                >
+                  <div
+                    className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg ${
+                      msg.role === 'assistant'
+                        ? 'gradient-primary'
+                        : 'bg-surface-200 dark:bg-surface-700'
+                    }`}
+                  >
                     {msg.role === 'assistant' ? (
-                      <Sparkles className="w-4 h-4 text-white" />
+                      <Sparkles className="h-4 w-4 text-white" />
                     ) : (
-                      <span className="text-xs font-bold text-surface-600 dark:text-surface-300">RK</span>
+                      <span className="text-xs font-bold text-surface-600 dark:text-surface-300">
+                        RK
+                      </span>
                     )}
                   </div>
                   <div className={`max-w-[75%] ${msg.role === 'user' ? 'text-right' : ''}`}>
-                    <div className={`inline-block rounded-2xl px-4 py-3 text-sm leading-relaxed ${msg.role === 'user'
-                      ? 'bg-brand-500 text-white rounded-br-md'
-                      : 'bg-surface-100 dark:bg-surface-800 text-surface-800 dark:text-surface-200 rounded-bl-md'
-                      }`}>
-                      <div className="whitespace-pre-wrap" dangerouslySetInnerHTML={{
-                        __html: msg.content
-                          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                          .replace(/### (.*)/g, '<h4 class="font-bold text-base mt-3 mb-2">$1</h4>')
-                          .replace(/\| (.*) \|/g, (match) => `<div class="font-mono text-xs overflow-x-auto">${match}</div>`)
-                          .replace(/- (.*)/g, '<li class="ml-4 list-disc">$1</li>')
-                          .replace(/> (.*)/g, '<blockquote class="border-l-2 border-brand-500 pl-3 my-2 text-xs opacity-80">$1</blockquote>')
-                          .replace(/\n/g, '<br/>')
-                      }} />
+                    <div
+                      className={`inline-block rounded-2xl px-4 py-3 text-sm leading-relaxed ${
+                        msg.role === 'user'
+                          ? 'rounded-br-md bg-brand-500 text-white'
+                          : 'rounded-bl-md bg-surface-100 text-surface-800 dark:bg-surface-800 dark:text-surface-200'
+                      }`}
+                    >
+                      <div
+                        className="whitespace-pre-wrap"
+                        dangerouslySetInnerHTML={{
+                          __html: msg.content
+                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                            .replace(
+                              /### (.*)/g,
+                              '<h4 class="font-bold text-base mt-3 mb-2">$1</h4>'
+                            )
+                            .replace(
+                              /\| (.*) \|/g,
+                              (match) =>
+                                `<div class="font-mono text-xs overflow-x-auto">${match}</div>`
+                            )
+                            .replace(/- (.*)/g, '<li class="ml-4 list-disc">$1</li>')
+                            .replace(
+                              /> (.*)/g,
+                              '<blockquote class="border-l-2 border-brand-500 pl-3 my-2 text-xs opacity-80">$1</blockquote>'
+                            )
+                            .replace(/\n/g, '<br/>'),
+                        }}
+                      />
                     </div>
                     {msg.role === 'assistant' && (
-                      <div className="flex items-center gap-2 mt-1.5 ml-1">
-                        <button className="p-1 rounded hover:bg-surface-100 dark:hover:bg-surface-800 text-surface-400 hover:text-surface-600">
-                          <Copy className="w-3 h-3" />
+                      <div className="ml-1 mt-1.5 flex items-center gap-2">
+                        <button className="rounded p-1 text-surface-400 hover:bg-surface-100 hover:text-surface-600 dark:hover:bg-surface-800">
+                          <Copy className="h-3 w-3" />
                         </button>
-                        <button className="p-1 rounded hover:bg-surface-100 dark:hover:bg-surface-800 text-surface-400 hover:text-emerald-500">
-                          <ThumbsUp className="w-3 h-3" />
+                        <button className="rounded p-1 text-surface-400 hover:bg-surface-100 hover:text-emerald-500 dark:hover:bg-surface-800">
+                          <ThumbsUp className="h-3 w-3" />
                         </button>
-                        <button className="p-1 rounded hover:bg-surface-100 dark:hover:bg-surface-800 text-surface-400 hover:text-red-500">
-                          <ThumbsDown className="w-3 h-3" />
+                        <button className="rounded p-1 text-surface-400 hover:bg-surface-100 hover:text-red-500 dark:hover:bg-surface-800">
+                          <ThumbsDown className="h-3 w-3" />
                         </button>
                       </div>
                     )}
@@ -177,14 +266,23 @@ export default function AIAssistantPage() {
               ))}
               {isTyping && (
                 <div className="flex gap-3">
-                  <div className="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center">
-                    <Sparkles className="w-4 h-4 text-white" />
+                  <div className="gradient-primary flex h-8 w-8 items-center justify-center rounded-lg">
+                    <Sparkles className="h-4 w-4 text-white" />
                   </div>
-                  <div className="bg-surface-100 dark:bg-surface-800 rounded-2xl rounded-bl-md px-4 py-3">
+                  <div className="rounded-2xl rounded-bl-md bg-surface-100 px-4 py-3 dark:bg-surface-800">
                     <div className="flex gap-1">
-                      <div className="w-2 h-2 rounded-full bg-surface-400 animate-bounce" style={{ animationDelay: '0ms' }} />
-                      <div className="w-2 h-2 rounded-full bg-surface-400 animate-bounce" style={{ animationDelay: '150ms' }} />
-                      <div className="w-2 h-2 rounded-full bg-surface-400 animate-bounce" style={{ animationDelay: '300ms' }} />
+                      <div
+                        className="h-2 w-2 animate-bounce rounded-full bg-surface-400"
+                        style={{ animationDelay: '0ms' }}
+                      />
+                      <div
+                        className="h-2 w-2 animate-bounce rounded-full bg-surface-400"
+                        style={{ animationDelay: '150ms' }}
+                      />
+                      <div
+                        className="h-2 w-2 animate-bounce rounded-full bg-surface-400"
+                        style={{ animationDelay: '300ms' }}
+                      />
                     </div>
                   </div>
                 </div>
@@ -193,52 +291,68 @@ export default function AIAssistantPage() {
             </div>
 
             {/* Input */}
-            <div className="p-4 border-t border-surface-200 dark:border-surface-800">
+            <div className="border-t border-surface-200 p-4 dark:border-surface-800">
               <div className="flex items-end gap-2">
-                <div className="flex-1 relative">
+                <div className="relative flex-1">
                   <textarea
                     ref={inputRef}
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); } }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        handleSend();
+                      }
+                    }}
                     placeholder="Ask about costs, materials, timelines, risks..."
                     rows={1}
-                    className="input-field pr-24 resize-none"
+                    className="input-field resize-none pr-24"
                   />
-                  <div className="absolute right-2 bottom-2 flex items-center gap-1">
-                    <button className="p-1.5 rounded-lg hover:bg-surface-100 dark:hover:bg-surface-700 text-surface-400">
-                      <Paperclip className="w-4 h-4" />
+                  <div className="absolute bottom-2 right-2 flex items-center gap-1">
+                    <button className="rounded-lg p-1.5 text-surface-400 hover:bg-surface-100 dark:hover:bg-surface-700">
+                      <Paperclip className="h-4 w-4" />
                     </button>
-                    <button className="p-1.5 rounded-lg hover:bg-surface-100 dark:hover:bg-surface-700 text-surface-400">
-                      <ImageIcon className="w-4 h-4" />
+                    <button className="rounded-lg p-1.5 text-surface-400 hover:bg-surface-100 dark:hover:bg-surface-700">
+                      <ImageIcon className="h-4 w-4" />
                     </button>
                   </div>
                 </div>
-                <button onClick={handleSend} disabled={!input.trim()} className="btn-primary p-3 disabled:opacity-50">
-                  <Send className="w-4 h-4" />
+                <button
+                  onClick={handleSend}
+                  disabled={!input.trim()}
+                  className="btn-primary p-3 disabled:opacity-50"
+                >
+                  <Send className="h-4 w-4" />
                 </button>
               </div>
-              <p className="text-2xs text-surface-400 mt-2 text-center">
-                AI responses are estimates based on available project data. Always verify with qualified professionals.
+              <p className="mt-2 text-center text-2xs text-surface-400">
+                AI responses are estimates based on available project data. Always verify with
+                qualified professionals.
               </p>
             </div>
           </div>
 
           {/* Quick Actions Sidebar */}
-          <div className="hidden xl:block w-64 space-y-3">
-            <p className="text-xs font-semibold text-surface-500 dark:text-surface-400 uppercase tracking-wider px-1">Quick Actions</p>
+          <div className="hidden w-64 space-y-3 xl:block">
+            <p className="px-1 text-xs font-semibold uppercase tracking-wider text-surface-500 dark:text-surface-400">
+              Quick Actions
+            </p>
             {quickActions.map((action) => {
               const Icon = action.icon;
               return (
                 <button
                   key={action.label}
                   onClick={() => handleQuickAction(action.prompt)}
-                  className="w-full flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-800 hover:border-brand-200 dark:hover:border-brand-800 transition-all text-left group"
+                  className="group flex w-full items-center gap-3 rounded-xl border border-surface-200 bg-white p-3 text-left transition-all hover:border-brand-200 dark:border-surface-800 dark:bg-surface-900 dark:hover:border-brand-800"
                 >
-                  <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${action.color} flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                    <Icon className="w-4 h-4 text-white" />
+                  <div
+                    className={`h-8 w-8 rounded-lg bg-gradient-to-br ${action.color} flex items-center justify-center transition-transform group-hover:scale-110`}
+                  >
+                    <Icon className="h-4 w-4 text-white" />
                   </div>
-                  <span className="text-xs font-medium text-surface-700 dark:text-surface-300">{action.label}</span>
+                  <span className="text-xs font-medium text-surface-700 dark:text-surface-300">
+                    {action.label}
+                  </span>
                 </button>
               );
             })}

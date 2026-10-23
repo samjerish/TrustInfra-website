@@ -60,10 +60,10 @@ module.exports = {
         '4xl': '2rem',
       },
       boxShadow: {
-        'glow': '0 0 20px rgba(99, 102, 241, 0.15)',
+        glow: '0 0 20px rgba(99, 102, 241, 0.15)',
         'glow-lg': '0 0 40px rgba(99, 102, 241, 0.2)',
         'glow-accent': '0 0 20px rgba(16, 185, 129, 0.15)',
-        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.12)',
+        glass: '0 8px 32px 0 rgba(0, 0, 0, 0.12)',
         'glass-lg': '0 16px 48px 0 rgba(0, 0, 0, 0.16)',
         'inner-glow': 'inset 0 1px 0 0 rgba(255, 255, 255, 0.05)',
       },
@@ -79,9 +79,9 @@ module.exports = {
         'slide-in-right': 'slideInRight 0.3s ease-out',
         'scale-in': 'scaleIn 0.2s ease-out',
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 6s ease-in-out infinite',
+        float: 'float 6s ease-in-out infinite',
         'glow-pulse': 'glowPulse 2s ease-in-out infinite',
-        'shimmer': 'shimmer 2s linear infinite',
+        shimmer: 'shimmer 2s linear infinite',
       },
       keyframes: {
         fadeIn: {

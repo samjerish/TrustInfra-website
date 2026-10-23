@@ -27,10 +27,11 @@ export const useAuthStore = create<AuthStore>((set) => ({
   role: 'customer',
   isAuthenticated: true,
   setUser: (user) => set({ user, role: user.role, isAuthenticated: true }),
-  setRole: (role) => set((state) => ({
-    role,
-    user: state.user ? { ...state.user, role } : null,
-  })),
+  setRole: (role) =>
+    set((state) => ({
+      role,
+      user: state.user ? { ...state.user, role } : null,
+    })),
   logout: () => set({ user: null, role: 'customer', isAuthenticated: false }),
 }));
 
@@ -129,9 +130,7 @@ export const useNotificationStore = create<NotificationStore>((set) => ({
     })),
   markAsRead: (id) =>
     set((state) => ({
-      notifications: state.notifications.map((n) =>
-        n.id === id ? { ...n, isRead: true } : n
-      ),
+      notifications: state.notifications.map((n) => (n.id === id ? { ...n, isRead: true } : n)),
       unreadCount: Math.max(0, state.unreadCount - 1),
     })),
   markAllAsRead: () =>

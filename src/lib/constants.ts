@@ -60,15 +60,32 @@ export const BOQ_CATEGORIES = [
 
 // Material Units
 export const MATERIAL_UNITS = [
-  'bags', 'kg', 'tonnes', 'cubic meters', 'cubic feet',
-  'sq. meters', 'sq. feet', 'nos', 'running meters',
-  'liters', 'bundles', 'pieces',
+  'bags',
+  'kg',
+  'tonnes',
+  'cubic meters',
+  'cubic feet',
+  'sq. meters',
+  'sq. feet',
+  'nos',
+  'running meters',
+  'liters',
+  'bundles',
+  'pieces',
 ];
 
 // Chart Colors
 export const CHART_COLORS = [
-  '#6366f1', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6',
-  '#0ea5e9', '#ec4899', '#14b8a6', '#f97316', '#84cc16',
+  '#6366f1',
+  '#10b981',
+  '#f59e0b',
+  '#ef4444',
+  '#8b5cf6',
+  '#0ea5e9',
+  '#ec4899',
+  '#14b8a6',
+  '#f97316',
+  '#84cc16',
 ];
 
 // Demo Data Constants

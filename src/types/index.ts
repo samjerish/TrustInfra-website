@@ -3,15 +3,15 @@
 // ============================================
 
 // === User & Auth Types ===
-export type UserRole = 
-  | 'customer' 
-  | 'engineer' 
-  | 'architect' 
-  | 'dealer' 
-  | 'worker' 
-  | 'supervisor' 
-  | 'project_manager' 
-  | 'finance' 
+export type UserRole =
+  | 'customer'
+  | 'engineer'
+  | 'architect'
+  | 'dealer'
+  | 'worker'
+  | 'supervisor'
+  | 'project_manager'
+  | 'finance'
   | 'admin';
 
 export interface User {
@@ -34,13 +34,8 @@ export interface AuthState {
 }
 
 // === Project Types ===
-export type ProjectStatus = 
-  | 'draft' 
-  | 'planning' 
-  | 'in_progress' 
-  | 'on_hold' 
-  | 'completed' 
-  | 'cancelled';
+export type ProjectStatus =
+  'draft' | 'planning' | 'in_progress' | 'on_hold' | 'completed' | 'cancelled';
 
 export interface Project {
   id: string;
@@ -74,18 +69,18 @@ export interface ProjectMember {
 }
 
 // === Document Types ===
-export type DocumentType = 
-  | 'land_document' 
-  | 'site_image' 
-  | 'survey_report' 
-  | 'government_doc' 
-  | 'autocad' 
-  | 'floor_plan' 
-  | 'elevation' 
-  | 'section_drawing' 
-  | '3d_model' 
-  | 'report' 
-  | 'invoice' 
+export type DocumentType =
+  | 'land_document'
+  | 'site_image'
+  | 'survey_report'
+  | 'government_doc'
+  | 'autocad'
+  | 'floor_plan'
+  | 'elevation'
+  | 'section_drawing'
+  | '3d_model'
+  | 'report'
+  | 'invoice'
   | 'other';
 
 export interface Document {
@@ -101,16 +96,16 @@ export interface Document {
 }
 
 // === BOQ Types ===
-export type BOQCategory = 
-  | 'earthwork' 
-  | 'concrete' 
-  | 'masonry' 
-  | 'steel' 
-  | 'plumbing' 
-  | 'electrical' 
-  | 'finishing' 
-  | 'woodwork' 
-  | 'painting' 
+export type BOQCategory =
+  | 'earthwork'
+  | 'concrete'
+  | 'masonry'
+  | 'steel'
+  | 'plumbing'
+  | 'electrical'
+  | 'finishing'
+  | 'woodwork'
+  | 'painting'
   | 'misc';
 
 export interface BOQItem {
@@ -142,7 +137,8 @@ export interface Task {
 }
 
 // === Material & Dealer Types ===
-export type RequestStatus = 'pending' | 'quoted' | 'approved' | 'ordered' | 'delivered' | 'cancelled';
+export type RequestStatus =
+  'pending' | 'quoted' | 'approved' | 'ordered' | 'delivered' | 'cancelled';
 
 export interface MaterialRequest {
   id: string;
@@ -233,13 +229,13 @@ export interface Payment {
 }
 
 // === AI Types ===
-export type AnalysisType = 
-  | 'cost_estimation' 
-  | 'material_estimation' 
-  | 'risk_analysis' 
-  | 'timeline_prediction' 
-  | 'design_analysis' 
-  | 'budget_optimization' 
+export type AnalysisType =
+  | 'cost_estimation'
+  | 'material_estimation'
+  | 'risk_analysis'
+  | 'timeline_prediction'
+  | 'design_analysis'
+  | 'budget_optimization'
   | 'safety_recommendation';
 
 export interface AIAnalysis {
@@ -261,14 +257,8 @@ export interface AIChatMessage {
 }
 
 // === Notification Types ===
-export type NotificationType = 
-  | 'approval' 
-  | 'deadline' 
-  | 'material' 
-  | 'attendance' 
-  | 'payment' 
-  | 'message' 
-  | 'system';
+export type NotificationType =
+  'approval' | 'deadline' | 'material' | 'attendance' | 'payment' | 'message' | 'system';
 
 export interface Notification {
   id: string;

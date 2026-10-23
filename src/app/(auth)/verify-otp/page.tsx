@@ -32,40 +32,42 @@ export default function VerifyOTPPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6 bg-surface-50 dark:bg-surface-950">
-      <div className="absolute inset-0 gradient-mesh opacity-30" />
+    <div className="flex min-h-screen items-center justify-center bg-surface-50 p-6 dark:bg-surface-950">
+      <div className="gradient-mesh absolute inset-0 opacity-30" />
       <div className="relative w-full max-w-md">
         <div className="premium-card p-8">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-white" />
+          <div className="mb-8 flex items-center gap-3">
+            <div className="gradient-primary flex h-10 w-10 items-center justify-center rounded-xl">
+              <Sparkles className="h-5 w-5 text-white" />
             </div>
             <span className="text-lg font-bold text-surface-900 dark:text-white">Trust Infra</span>
           </div>
 
-          <h1 className="text-2xl font-bold text-surface-900 dark:text-white mb-2">Verify OTP</h1>
-          <p className="text-sm text-surface-500 dark:text-surface-400 mb-8">
+          <h1 className="mb-2 text-2xl font-bold text-surface-900 dark:text-white">Verify OTP</h1>
+          <p className="mb-8 text-sm text-surface-500 dark:text-surface-400">
             We&apos;ve sent a 6-digit code to your registered phone/email. Enter it below.
           </p>
 
-          <div className="flex justify-center gap-3 mb-6">
+          <div className="mb-6 flex justify-center gap-3">
             {otp.map((digit, index) => (
               <input
                 key={index}
-                ref={(el) => { inputRefs.current[index] = el; }}
+                ref={(el) => {
+                  inputRefs.current[index] = el;
+                }}
                 type="text"
                 inputMode="numeric"
                 maxLength={1}
                 value={digit}
                 onChange={(e) => handleChange(index, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(index, e)}
-                className="w-12 h-14 text-center text-xl font-bold rounded-xl border border-surface-200 dark:border-surface-700 bg-white dark:bg-surface-900 text-surface-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 transition-all"
+                className="h-14 w-12 rounded-xl border border-surface-200 bg-white text-center text-xl font-bold text-surface-900 transition-all focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30 dark:border-surface-700 dark:bg-surface-900 dark:text-white"
               />
             ))}
           </div>
 
-          <button className="btn-primary w-full py-3 mb-4">
-            Verify & Continue <ArrowRight className="w-4 h-4" />
+          <button className="btn-primary mb-4 w-full py-3">
+            Verify & Continue <ArrowRight className="h-4 w-4" />
           </button>
 
           <div className="text-center">
@@ -74,15 +76,21 @@ export default function VerifyOTPPage() {
                 Resend code in <span className="font-semibold text-brand-500">{timer}s</span>
               </p>
             ) : (
-              <button onClick={() => setTimer(30)} className="text-sm text-brand-500 hover:text-brand-600 font-medium inline-flex items-center gap-1">
-                <RefreshCw className="w-3 h-3" /> Resend Code
+              <button
+                onClick={() => setTimer(30)}
+                className="inline-flex items-center gap-1 text-sm font-medium text-brand-500 hover:text-brand-600"
+              >
+                <RefreshCw className="h-3 w-3" /> Resend Code
               </button>
             )}
           </div>
 
           <div className="mt-6 text-center">
-            <a href="/login" className="text-sm text-surface-500 dark:text-surface-400 hover:text-brand-500 inline-flex items-center gap-1">
-              <ArrowLeft className="w-3 h-3" /> Back to sign in
+            <a
+              href="/login"
+              className="inline-flex items-center gap-1 text-sm text-surface-500 hover:text-brand-500 dark:text-surface-400"
+            >
+              <ArrowLeft className="h-3 w-3" /> Back to sign in
             </a>
           </div>
         </div>

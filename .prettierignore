@@ -1,0 +1,9 @@
+node_modules
+.next
+.node
+node.zip
+out
+build
+coverage
+*.tsbuildinfo
+package-lock.json
